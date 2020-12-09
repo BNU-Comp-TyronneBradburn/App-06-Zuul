@@ -1,9 +1,9 @@
 
 /**
- * Enumeration class Items - write a description of the enum class here
+ * Enumeration class Items - List of Items the User can pick up and use.
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author (Tyronne)
+ * @version (09/12/2020)
  */
 public enum Items
 {

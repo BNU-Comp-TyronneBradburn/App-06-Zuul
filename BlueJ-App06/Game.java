@@ -11,58 +11,27 @@
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Tyronne
+ * @version 09/12/2020
  * 
- * Modified and extended by Your name
+ * Modified and extended by Tyronne
  */
 
 public class Game 
 {
     private Parser parser;
+    private Map map;
     private Room currentRoom;
     private Player player;
-    
-    
+   
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
     {
-        createRooms();
+        map = map; 
         parser = new Parser();
         player = new Player("Tyronne");
-    }
-
-    /**
-     * Create all the rooms and link their exits together.
-     */
-    private void createRooms()
-    {
-        Room outside, theater, pub, lab, office;
-      
-        // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        
-        // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-
-        theater.setExit("west", outside);
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-
-        currentRoom = outside;  // start game outside
     }
 
     /**
@@ -141,7 +110,7 @@ public class Game
     private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("around at the abandoned Town.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();

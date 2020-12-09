@@ -21,7 +21,9 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+    private Player player;
+    
+    
     /**
      * Create the game and initialise its internal map.
      */
@@ -29,6 +31,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        player = new Player("Tyronne");
     }
 
     /**

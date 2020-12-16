@@ -29,7 +29,9 @@ public class Game
      */
     public Game() 
     {
-        map = map; 
+        map = new Map(); 
+        currentRoom = map.getStartRoom();
+        
         parser = new Parser();
         player = new Player("Tyronne");
     }

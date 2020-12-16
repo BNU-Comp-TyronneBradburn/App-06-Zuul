@@ -7,5 +7,5 @@
  */
 public enum Items
 {
-    KEY, POTION, SWORD, SHIELD, TRAPS
+    NONE, KEY, POTION, SWORD, SHIELD, TRAPS, BOTTLE
 }

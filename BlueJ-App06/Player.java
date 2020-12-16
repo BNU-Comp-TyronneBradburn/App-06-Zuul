@@ -12,8 +12,10 @@ public class Player
     private int health; 
     private int energy;
     private ArrayList itemList;
-    private int attackValue;
-    private int defenceValue;
+    //As a percentage between 0-100%
+    private byte attackValue;
+    //As a percentage between 0-100%
+    private byte defenceValue;
     private String name;
 
     /**
@@ -23,8 +25,8 @@ public class Player
     {
         health = 100;
         energy = 100;
-        attackValue = 0;
-        defenceValue = 0;
+        attackValue = 10;
+        defenceValue = 10;
 
         itemList = new ArrayList();
 
@@ -37,6 +39,12 @@ public class Player
     public void pickUp(Items item)
     {
         itemList.add(item);
+        
+        if (item == Items.SWORD)
+            attackValue = 100;
+        
+        if (item == Items.SHIELD)
+            defenceValue = 100; 
     }
 
     /**
@@ -78,29 +86,37 @@ public class Player
     }//end method getItemList
 
     /**GET Method Propertie attackValue*/
-    public int getAttackValue()
+    public byte getAttackValue()
     {
         return this.attackValue;
     }//end method getAttackValue
 
     /**SET Method Propertie attackValue*/
-    public void setAttackValue(int attackValue)
+    public void setAttackValue(byte attackValue)
     {
         this.attackValue = attackValue;
     }//end method setAttackValue
 
     /**GET Method Propertie defenceValue*/
-    public int getDefenceValue()
+    public byte getDefenceValue()
     {
         return this.defenceValue;
     }//end method getDefenceValue
 
     /**SET Method Propertie defenceValue*/
-    public void setDefenceValue(int defenceValue)
+    public void setDefenceValue(byte defenceValue)
     {
         this.defenceValue = defenceValue;
     }//end method setDefenceValue
 
     //End GetterSetterExtension Source Code
     //!
+    
+    public String getStatus()
+    {
+        String message = "attack value: " + attackValue + ".\n";
+        message = message + " defence value: \t" + defenceValue + ".\n";
+        message = message + " health: \t " + health + ".\n";
+        return message;
+    }
 }

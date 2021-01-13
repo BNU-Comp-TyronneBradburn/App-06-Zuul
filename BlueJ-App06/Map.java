@@ -42,6 +42,7 @@ public class Map
         dungeonSouthernCorridor = new Room("in what appears to be a dungeon Corridor");
         dungeonNorthernCorridor = new Room("in the northern part of the dungeon");
         dungeonRoom = new Room("in dungeon room");
+        dungeonKeyRoom = new Room("in a dungeon room");
         dungeonTrapRoom = new Room("in a dungeon room and step on a trap plate and activate a trap");
         dungeonCellRoom = new Room("in a what appears to be a cell room with a girl locked up");
     }

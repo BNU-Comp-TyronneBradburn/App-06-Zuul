@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 /**
  * The player class allows the user to control the character within the
  * world of Zuul. It also shows the health, energy, attack value and defence
@@ -11,7 +12,7 @@ public class Player
 {
     private int health; 
     private int energy;
-    private ArrayList itemList;
+    private ArrayList<Items> itemList;
     //As a percentage between 0-100%
     private byte attackValue;
     //As a percentage between 0-100%
@@ -36,7 +37,7 @@ public class Player
     /**
      * Method to pick-up Items 
      */
-    public void pickUp(Items item)
+    public void pickUpItem(Items item)
     {
         itemList.add(item);
         
@@ -121,5 +122,19 @@ public class Player
         message = message + " defence value: \t" + defenceValue + ".\n";
         message = message + " health: \t " + health + ".\n";
         return message;
+    }
+    
+    public boolean isCarrying(Items targetItem)
+    {
+        boolean found = false; 
+        for(Items item: itemList)
+        {
+            if(item == targetItem) 
+            {
+                return true;
+            }
+            
+        }
+        return false;
     }
 }

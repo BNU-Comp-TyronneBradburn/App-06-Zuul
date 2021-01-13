@@ -7,5 +7,19 @@
  */
 public enum Items
 {
-    NONE, KEY, POTION, SWORD, SHIELD, TRAPS, BOTTLE, TOURCH, 
+    NONE("none"), KEY("key"), POTION("potion"), 
+    SWORD("sword"), SHIELD("shield"), TRAPS("traps"), 
+    BOTTLE("bottle"), TOURCH("tourch");
+    
+    private String item;
+    
+    private Items(String item)
+    {
+        this.item = item;
+    }
+    
+    public String getValue()
+    {
+        return item;
+    }
 }

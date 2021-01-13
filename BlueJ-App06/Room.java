@@ -65,8 +65,7 @@ public class Room
     public String getLongDescription()
     {
         String message = "You are " + name +  " " + description + ".\n" + getExitString();
-        message = message + " Items Found " + item;
-        message = message + " Item Taken " + item;
+        message = message + " Items Found " + item; 
         return message;
     }
     
@@ -107,6 +106,18 @@ public class Room
     public void addItem(Items item)
     {
         this.item = item;
+    }
+    
+    public Items takeItem()
+    {
+        Items oldItem = item;
+        item = Items.NONE;
+        return oldItem;
+    }
+    
+    public String getItem()
+    {
+        return item.name().toLowerCase();
     }
 }
 

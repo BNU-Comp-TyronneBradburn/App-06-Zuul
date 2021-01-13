@@ -98,6 +98,14 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
+            case TAKE:
+                takeItem(command);
+                break;    
+                
+            case UNLOCK:
+                unlock(command);
+                break;        
         }
         return wantToQuit;
     }
@@ -139,12 +147,101 @@ public class Game
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
-        else {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+        else 
+        {
+            if(nextRoom.getShortDescription().contains("cell"))
+            {
+                if(player.isCarrying(Items.KEY))
+                {
+                    currentRoom = nextRoom;
+                    System.out.println(currentRoom.getLongDescription());
+                    
+                    System.out.println("You have opened the door with the key.");
+                }
+                else
+                {
+                    System.out.println("You need a key to open this door.");
+                }
+            }
+            else
+            {
+                currentRoom = nextRoom;
+                System.out.println(currentRoom.getLongDescription());
+            }
         }
     }
 
+    public void unlock(Command command)
+    {
+        if(!command.hasSecondWord()) 
+        {
+            // if there is no second word, we don't know where to go...
+            System.out.println("Unlock which exit?");
+            return;
+        }
+
+        String direction = command.getSecondWord();
+
+        // Try to leave current room.
+        Room nextRoom = currentRoom.getExit(direction);
+
+        if (nextRoom == null) 
+        {
+            System.out.println("There is no door!");
+        }
+        else 
+        {
+            if(nextRoom.getShortDescription().contains("cell"))
+            {
+                if(player.isCarrying(Items.KEY))
+                {
+                    currentRoom = nextRoom;
+                     System.out.println("You have opened the door with the key.");
+                     System.out.println(currentRoom.getLongDescription());
+                }
+                else
+                {
+                    System.out.println("You need a key to open this door.");
+                }
+            }
+            else
+            {
+                currentRoom = nextRoom;
+                System.out.println(currentRoom.getLongDescription());
+            }
+        }
+    }
+    private void takeItem(Command command)
+    {
+        if(!command.hasSecondWord()) 
+        {
+            // if there is no second word, we don't know where to go...
+            System.out.println("What Item?");
+            return;
+        }
+
+        String itemString = command.getSecondWord();
+
+        // Try to leave current room.
+
+        String roomItem = currentRoom.getItem();
+        if (itemString.equals(roomItem))
+        {
+            System.out.println(" item " + itemString + " taken " );
+            currentRoom.takeItem();
+            Items item = Items.valueOf(itemString.toUpperCase());
+            player.pickUpItem(item);
+        }
+        else 
+        {
+            
+            System.out.println(" Item not avaiable ");
+        }
+        
+    }
+    
+   
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.

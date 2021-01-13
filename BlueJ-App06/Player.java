@@ -112,6 +112,9 @@ public class Player
     //End GetterSetterExtension Source Code
     //!
     
+    /**
+     *  Player can get the status of the charatcer.
+     */
     public String getStatus()
     {
         String message = "attack value: " + attackValue + ".\n";

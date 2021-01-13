@@ -12,9 +12,18 @@ public class Map
     private Room forest;
     private Room westForest;
     private Room eastForest;
-    private Room cave;
-    private Room dungeon; 
+    private Room caveEntrance;
+    private Room caveRoom;
+    private Room dungeonSouthernCorridor;
+    private Room dungeonNorthernCorridor;
+    private Room dungeonRoom;
+    private Room dungeonKeyRoom;
+    private Room dungeonTrapRoom;
+    private Room dungeonCellRoom;
     
+    /**
+     * Method for the starting point of the game
+     */
     public Map()
     {
         createFirstRooms();
@@ -28,53 +37,56 @@ public class Map
         forest = new Room("in a gloomy forest with trees in every direction");
         eastForest = new Room("at an impassable cliff face");
         westForest = new Room("near an impassable river");
-        cave = new Room("see an cave entrance");
+        caveEntrance = new Room("at an cave entrance");
+        caveRoom = new Room("in a large cave room");
+        dungeonSouthernCorridor = new Room("in what appears to be a dungeon Corridor");
+        dungeonNorthernCorridor = new Room("in the northern part of the dungeon");
+        dungeonRoom = new Room("in dungeon room");
+        dungeonTrapRoom = new Room("in a dungeon room and step on a trap plate and activate a trap");
+        dungeonCellRoom = new Room("in a what appears to be a cell room with a girl locked up");
     }
    
+    /**
+     * Method to connect the rooms. 
+     */
     private void connectFirstRooms()
     {
         forest.setExit("east",eastForest);
         forest.setExit("west",westForest);
-        forest.setExit("north", cave);
+        forest.setExit("north", caveEntrance);
         
         eastForest.setExit("west", forest);
         westForest.setExit("east", forest);
         westForest.addItem(Items.BOTTLE);
         
-        cave.setExit("south", forest);
-    }
-    
-    /**
-     * Create all the rooms and link their exits together.
-     */
-    
-    private void createOldRooms()
-    {
-        Room outside, theater, pub, lab, office;
-      
-        // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        caveEntrance.setExit("north", caveRoom);
+        caveEntrance.setExit("south", forest);
         
+        caveRoom.setExit("north", dungeonSouthernCorridor);
+        caveRoom.setExit("south", caveEntrance);
         
-        // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-
-        theater.setExit("west", outside);
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-
-        startRoom = outside;  // start game outside
+        dungeonSouthernCorridor.setExit("north", dungeonNorthernCorridor);
+        dungeonSouthernCorridor.setExit("east", dungeonRoom);
+        dungeonSouthernCorridor.setExit("south", caveRoom);
+        dungeonSouthernCorridor.setExit("west", dungeonTrapRoom);
+        dungeonSouthernCorridor.addItem(Items.SWORD);
+        
+        dungeonRoom.setExit("west", dungeonSouthernCorridor);
+        dungeonRoom.addItem(Items.SHIELD);
+        
+        dungeonTrapRoom.setExit("east", dungeonSouthernCorridor);
+        
+        dungeonNorthernCorridor.setExit("north", dungeonCellRoom);
+        dungeonNorthernCorridor.setExit("south", dungeonSouthernCorridor);
+        dungeonNorthernCorridor.setExit("east", dungeonKeyRoom);
+        dungeonNorthernCorridor.setExit("west", dungeonTrapRoom);
+        
+        dungeonKeyRoom.setExit("west", dungeonNorthernCorridor);
+        dungeonKeyRoom.addItem(Items.KEY);
+        
+        dungeonTrapRoom.setExit("east", dungeonNorthernCorridor);
+        
+        dungeonCellRoom.setExit("south", dungeonNorthernCorridor); 
     }
     
     public Room getStartRoom()

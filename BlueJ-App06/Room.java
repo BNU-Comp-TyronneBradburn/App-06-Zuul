@@ -66,13 +66,11 @@ public class Room
     {
         String message = "You are " + name +  " " + description + ".\n" + getExitString();
         message = message + " Items Found " + item;
+        message = message + " Item Taken " + item;
         return message;
     }
     
-    /**
-     * 
-     */
-
+    
     /**
      * Return a string describing the room's exits, for example
      * "Exits: north west".

@@ -171,6 +171,9 @@ public class Game
         }
     }
 
+    /**
+     * method to unlock the cell door
+     */
     public void unlock(Command command)
     {
         if(!command.hasSecondWord()) 
@@ -211,6 +214,10 @@ public class Game
             }
         }
     }
+    
+    /**
+     * method to take items from rooms.
+     */
     private void takeItem(Command command)
     {
         if(!command.hasSecondWord()) 
@@ -236,12 +243,9 @@ public class Game
         {
             
             System.out.println(" Item not avaiable ");
-        }
-        
+        } 
     }
-    
-   
-    
+  
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.

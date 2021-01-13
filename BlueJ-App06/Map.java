@@ -44,7 +44,7 @@ public class Map
         dungeonRoom = new Room("in dungeon room");
         dungeonKeyRoom = new Room("in a dungeon room");
         dungeonTrapRoom = new Room("in a dungeon room and step on a trap plate and activate a trap");
-        dungeonCellRoom = new Room("in a what appears to be a cell room with a girl locked up");
+        dungeonCellRoom = new Room("in a what appears to be a cell room and managed to free the girl");
     }
    
     /**

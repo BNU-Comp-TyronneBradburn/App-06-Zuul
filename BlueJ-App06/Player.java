@@ -124,6 +124,9 @@ public class Player
         return message;
     }
     
+    /**
+     *  method to maske sure the player has the item for the cell unlock
+     */
     public boolean isCarrying(Items targetItem)
     {
         boolean found = false; 
@@ -132,8 +135,7 @@ public class Player
             if(item == targetItem) 
             {
                 return true;
-            }
-            
+            }  
         }
         return false;
     }

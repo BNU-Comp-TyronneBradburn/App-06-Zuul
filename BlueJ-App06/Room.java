@@ -21,6 +21,7 @@ public class Room
     private HashMap<String, Room> exits;        // stores exits of this room.
     private String name; 
     private Items item;
+    private Room dungeonCellRoom;
 
     /**
      * Create a room described "description". Initially, it has
@@ -117,6 +118,11 @@ public class Room
     public String getItem()
     {
         return item.name().toLowerCase();
+    }
+    
+    public Room dungeonCellRoom()
+    {
+        return dungeonCellRoom;
     }
 }
 

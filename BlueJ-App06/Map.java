@@ -7,8 +7,9 @@
  */
 public class Map
 {
-    
+    private Room room;
     private Room startRoom;
+    private Room currentRoom;
     private Room forest;
     private Room westForest;
     private Room eastForest;
@@ -87,11 +88,16 @@ public class Map
         
         dungeonTrapRoom.setExit("east", dungeonNorthernCorridor);
         
-        dungeonCellRoom.setExit("south", dungeonNorthernCorridor); 
+        dungeonCellRoom.setExit("south", dungeonNorthernCorridor);   
     }
     
     public Room getStartRoom()
     {
         return startRoom;
+    }
+    
+    public Room currentRoom()
+    {
+        return currentRoom;
     }
 }

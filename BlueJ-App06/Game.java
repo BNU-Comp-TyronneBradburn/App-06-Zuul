@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -23,6 +24,9 @@ public class Game
     private Map map;
     private Room currentRoom;
     private Player player;
+    private static int limitOfMoves; 
+    private static int numberOfMoves;
+    
    
     /**
      * Create the game and initialise its internal map.
@@ -30,13 +34,15 @@ public class Game
     public Game() 
     {
         map = new Map(); 
-        currentRoom = map.getStartRoom();
-        
+        currentRoom = map.getStartRoom(); 
+        numberOfMoves = 0; 
         parser = new Parser();
         player = new Player("Tyronne");
     }
-
-    /**
+    
+   
+    
+     /**
      *  Main play routine.  Loops until end of play.
      */
     public void play() 
@@ -67,6 +73,9 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
+        
+        
+        
         System.out.println(currentRoom.getLongDescription());
     }
 
@@ -78,7 +87,7 @@ public class Game
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
-
+   
         CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) 
@@ -86,7 +95,7 @@ public class Game
             case UNKNOWN:
                 System.out.println("I don't know what you mean...");
                 break;
-
+                
             case HELP:
                 printHelp();
                 break;
@@ -101,11 +110,13 @@ public class Game
                 
             case TAKE:
                 takeItem(command);
-                break;    
-                
+                break;     
+            
             case UNLOCK:
-                unlock(command);
-                break;        
+                unlockDoor(command);
+                break;
+            
+            
         }
         return wantToQuit;
     }
@@ -132,9 +143,9 @@ public class Game
      */
     private void goRoom(Command command) 
     {
-        if(!command.hasSecondWord()) 
+         if(!command.hasSecondWord()) 
         {
-            // if there is no second word, we don't know where to go...
+             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
         }
@@ -144,43 +155,28 @@ public class Game
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
 
-        if (nextRoom == null) {
+         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
-        else 
+        else
         {
-            if(nextRoom.getShortDescription().contains("cell"))
-            {
-                if(player.isCarrying(Items.KEY))
-                {
-                    currentRoom = nextRoom;
-                    System.out.println(currentRoom.getLongDescription());
-                    
-                    System.out.println("You have opened the door with the key.");
-                }
-                else
-                {
-                    System.out.println("You need a key to open this door.");
-                }
-            }
-            else
-            {
-                currentRoom = nextRoom;
-                System.out.println(currentRoom.getLongDescription());
-            }
+            currentRoom = nextRoom;
+            System.out.println(currentRoom.getLongDescription());
+            
         }
+        return;
     }
-
+    
     /**
      * method to unlock the cell door
      */
-    public void unlock(Command command)
+    public boolean unlockDoor(Command command)
     {
         if(!command.hasSecondWord()) 
         {
             // if there is no second word, we don't know where to go...
             System.out.println("Unlock which exit?");
-            return;
+            return false;
         }
 
         String direction = command.getSecondWord();
@@ -199,8 +195,8 @@ public class Game
                 if(player.isCarrying(Items.KEY))
                 {
                     currentRoom = nextRoom;
-                     System.out.println("You have opened the door with the key.");
-                     System.out.println(currentRoom.getLongDescription());
+                    System.out.println("You have opened the door with the key.");
+                    System.out.println(currentRoom.getLongDescription()); 
                 }
                 else
                 {
@@ -213,10 +209,11 @@ public class Game
                 System.out.println(currentRoom.getLongDescription());
             }
         }
+        return false;
     }
-    
+     
     /**
-     * method to take items from rooms.
+      * method to take items from rooms.
      */
     private void takeItem(Command command)
     {
@@ -241,11 +238,10 @@ public class Game
         }
         else 
         {
-            
             System.out.println(" Item not avaiable ");
         } 
     }
-  
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
@@ -253,12 +249,15 @@ public class Game
      */
     private boolean quit(Command command) 
     {
-        if(command.hasSecondWord()) {
+        if(command.hasSecondWord()) 
+        {
             System.out.println("Quit what?");
             return false;
         }
-        else {
+        else 
+        {
             return true;  // signal that we want to quit
         }
     }
+    
 }

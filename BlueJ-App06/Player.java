@@ -14,9 +14,9 @@ public class Player
     private int energy;
     private ArrayList<Items> itemList;
     //As a percentage between 0-100%
-    private byte attackValue;
+    private int attackValue;
     //As a percentage between 0-100%
-    private byte defenceValue;
+    private int defenceValue;
     private String name;
 
     /**
@@ -87,25 +87,25 @@ public class Player
     }//end method getItemList
 
     /**GET Method Propertie attackValue*/
-    public byte getAttackValue()
+    public int getAttackValue()
     {
         return this.attackValue;
     }//end method getAttackValue
 
     /**SET Method Propertie attackValue*/
-    public void setAttackValue(byte attackValue)
+    public void setAttackValue(int attackValue)
     {
         this.attackValue = attackValue;
     }//end method setAttackValue
 
     /**GET Method Propertie defenceValue*/
-    public byte getDefenceValue()
+    public int getDefenceValue()
     {
         return this.defenceValue;
     }//end method getDefenceValue
 
     /**SET Method Propertie defenceValue*/
-    public void setDefenceValue(byte defenceValue)
+    public void setDefenceValue(int defenceValue)
     {
         this.defenceValue = defenceValue;
     }//end method setDefenceValue
@@ -122,6 +122,14 @@ public class Player
         message = message + " defence value: \t" + defenceValue + ".\n";
         message = message + " health: \t " + health + ".\n";
         return message;
+    }
+    
+    public void printStats()
+    {
+        System.out.println("Attack: " + attackValue);
+        
+        System.out.println("health: " + health);
+        System.out.println("Energy: " + energy);
     }
     
     /**

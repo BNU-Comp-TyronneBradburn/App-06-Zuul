@@ -1,3 +1,4 @@
+ 
 import java.util.Scanner;
 /**
  *  This class is the main class of the "World of Zuul" application. 
@@ -24,23 +25,19 @@ public class Game
     private Map map;
     private Room currentRoom;
     private Player player;
-    private static int limitOfMoves; 
-    private static int numberOfMoves;
+    private Room dungeonCellRoom;
     
-   
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
-    {
+     {
         map = new Map(); 
-        currentRoom = map.getStartRoom(); 
-        numberOfMoves = 0; 
+        currentRoom = map.getStartRoom();   
         parser = new Parser();
         player = new Player("Tyronne");
     }
     
-   
     
      /**
      *  Main play routine.  Loops until end of play.
@@ -73,8 +70,6 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
-        
-        
         
         System.out.println(currentRoom.getLongDescription());
     }
@@ -115,8 +110,7 @@ public class Game
             case UNLOCK:
                 unlockDoor(command);
                 break;
-            
-            
+                
         }
         return wantToQuit;
     }
@@ -141,11 +135,12 @@ public class Game
      * Try to go in one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
      */
+    
     private void goRoom(Command command) 
     {
          if(!command.hasSecondWord()) 
         {
-             // if there is no second word, we don't know where to go...
+            // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
         }
@@ -155,17 +150,19 @@ public class Game
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
 
-         if (nextRoom == null) {
+        if (nextRoom == null) 
+        {
             System.out.println("There is no door!");
         }
         else
         {
             currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
-            
+            System.out.println(currentRoom.getLongDescription()); 
         }
-        return;
+         return;
     }
+    
+    
     
     /**
      * method to unlock the cell door
@@ -196,7 +193,7 @@ public class Game
                 {
                     currentRoom = nextRoom;
                     System.out.println("You have opened the door with the key.");
-                    System.out.println(currentRoom.getLongDescription()); 
+                    System.out.println(currentRoom.getLongDescription());
                 }
                 else
                 {
@@ -212,6 +209,8 @@ public class Game
         return false;
     }
      
+    
+    
     /**
       * method to take items from rooms.
      */
@@ -260,4 +259,23 @@ public class Game
         }
     }
     
+    private void printGetHealth()
+    {
+        System.out.println(" Player Status = " + player.getHealth());
+    }
+    
+    private void printPlayerScore()
+    {
+        System.out.println(" Player score = " + player.getScore());
+    }
+    
+    private void enterNextRoom(Room nextRoom)
+    {
+        currentRoom = nextRoom;
+        System.out.println(currentRoom.getLongDescription());
+        player.getHealth(20);
+        player.increaseScore(50);
+        System.out.println(" Player Status = " + player.getHealth());
+        System.out.println(" Player score = " + player.getScore());
+    }
 }

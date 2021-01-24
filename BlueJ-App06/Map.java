@@ -20,22 +20,25 @@ public class Map
     private Room dungeonRoom;
     private Room dungeonKeyRoom;
     private Room dungeonTrapRoom;
-    private Room dungeonCellRoom;
+    private Room dungeonCoinRoom;
+    
+    
+    
     
     /**
      * Method for the starting point of the game
      */
     public Map()
     {
-        createFirstRooms();
-        connectFirstRooms();
+        createRooms();
+        connectRooms();
         
         startRoom = forest;
     }
     
-    private void createFirstRooms()
+     private void createRooms()
     {
-        forest = new Room("in a gloomy forest with trees in every direction");
+        forest = new Room("in a gloomy forest with trees in every direction"); 
         eastForest = new Room("at an impassable cliff face");
         westForest = new Room("near an impassable river");
         caveEntrance = new Room("at an cave entrance");
@@ -45,13 +48,13 @@ public class Map
         dungeonRoom = new Room("in dungeon room");
         dungeonKeyRoom = new Room("in a dungeon room");
         dungeonTrapRoom = new Room("in a dungeon room and step on a trap plate and activate a trap");
-        dungeonCellRoom = new Room("in a what appears to be a cell room and managed to free the girl");
+        dungeonCoinRoom = new Room("in a what appears to be a cell room and managed to free the girl, you also notice a secret door"); 
     }
-   
+    
     /**
      * Method to connect the rooms. 
      */
-    private void connectFirstRooms()
+    private void connectRooms()
     {
         forest.setExit("east",eastForest);
         forest.setExit("west",westForest);
@@ -78,7 +81,7 @@ public class Map
         
         dungeonTrapRoom.setExit("east", dungeonSouthernCorridor);
         
-        dungeonNorthernCorridor.setExit("north", dungeonCellRoom);
+        dungeonNorthernCorridor.setExit("north", dungeonCoinRoom);
         dungeonNorthernCorridor.setExit("south", dungeonSouthernCorridor);
         dungeonNorthernCorridor.setExit("east", dungeonKeyRoom);
         dungeonNorthernCorridor.setExit("west", dungeonTrapRoom);
@@ -88,7 +91,8 @@ public class Map
         
         dungeonTrapRoom.setExit("east", dungeonNorthernCorridor);
         
-        dungeonCellRoom.setExit("south", dungeonNorthernCorridor);   
+        dungeonCoinRoom.setExit("south", dungeonNorthernCorridor);
+        dungeonCoinRoom.addItem(Items.BAGOFCOINS);
     }
     
     public Room getStartRoom()

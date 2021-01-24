@@ -120,9 +120,6 @@ public class Room
         return item.name().toLowerCase();
     }
     
-    public Room dungeonCellRoom()
-    {
-        return dungeonCellRoom;
-    }
+    
 }
 

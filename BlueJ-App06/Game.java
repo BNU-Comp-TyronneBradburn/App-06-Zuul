@@ -1,4 +1,3 @@
- 
 import java.util.Scanner;
 /**
  *  This class is the main class of the "World of Zuul" application. 
@@ -25,7 +24,7 @@ public class Game
     private Map map;
     private Room currentRoom;
     private Player player;
-    private Room dungeonCellRoom;
+    
     
     /**
      * Create the game and initialise its internal map.
@@ -39,7 +38,7 @@ public class Game
     }
     
     
-     /**
+    /**
      *  Main play routine.  Loops until end of play.
      */
     public void play() 
@@ -47,19 +46,19 @@ public class Game
         printWelcome();
 
         // Enter the main command loop.  Here we repeatedly read commands and
-        // execute them until the game is over.
-                
+        // execute them until the game is over.;
         boolean finished = false;
         
         while (! finished) 
         {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
+            {
+                Command command = parser.getCommand();
+                finished = processCommand(command);
+            }  
         }
-        
         System.out.println("Thank you for playing.  Good bye.");
     }
-
+     
     /**
      * Print out the opening message for the player.
      */
@@ -67,7 +66,7 @@ public class Game
     {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("You have been tasked to reclaim the Kings treasure.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         
@@ -138,11 +137,11 @@ public class Game
     
     private void goRoom(Command command) 
     {
-         if(!command.hasSecondWord()) 
+        if(!command.hasSecondWord()) 
         {
-            // if there is no second word, we don't know where to go...
-            System.out.println("Go where?");
-            return;
+           // if there is no second word, we don't know where to go...
+           System.out.println("Go where?");
+           return;
         }
 
         String direction = command.getSecondWord();
@@ -187,7 +186,7 @@ public class Game
         }
         else 
         {
-            if(nextRoom.getShortDescription().contains("cell"))
+            if(nextRoom.getShortDescription().contains("coin"))
             {
                 if(player.isCarrying(Items.KEY))
                 {
@@ -233,12 +232,18 @@ public class Game
             System.out.println(" item " + itemString + " taken " );
             currentRoom.takeItem();
             Items item = Items.valueOf(itemString.toUpperCase());
-            player.pickUpItem(item);
+            player.takeItem(item);
+            printStats();
         }
         else 
         {
             System.out.println(" Item not avaiable ");
         } 
+    }
+    
+    public void printStats()
+    {
+        player.printStats();
     }
     
     /** 
@@ -257,25 +262,5 @@ public class Game
         {
             return true;  // signal that we want to quit
         }
-    }
-    
-    private void printGetHealth()
-    {
-        System.out.println(" Player Status = " + player.getHealth());
-    }
-    
-    private void printPlayerScore()
-    {
-        System.out.println(" Player score = " + player.getScore());
-    }
-    
-    private void enterNextRoom(Room nextRoom)
-    {
-        currentRoom = nextRoom;
-        System.out.println(currentRoom.getLongDescription());
-        player.getHealth(20);
-        player.increaseScore(50);
-        System.out.println(" Player Status = " + player.getHealth());
-        System.out.println(" Player score = " + player.getScore());
     }
 }

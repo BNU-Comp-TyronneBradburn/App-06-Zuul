@@ -1,6 +1,7 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -11,8 +12,10 @@ import java.util.Iterator;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Tyronne
+ * @version 09/12/2020
+ * 
+ * Modified and extended by Tyronne
  */
 
 public class Room 
@@ -21,7 +24,7 @@ public class Room
     private HashMap<String, Room> exits;        // stores exits of this room.
     private String name; 
     private Items item;
-    private Room dungeonCellRoom;
+    
 
     /**
      * Create a room described "description". Initially, it has

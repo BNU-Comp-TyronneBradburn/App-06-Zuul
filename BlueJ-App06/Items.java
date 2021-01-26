@@ -7,9 +7,10 @@
  */
 public enum Items
 {
-    NONE("none"), KEY("key"),
-    SWORD("magic sword"), SHIELD("magic shield"), TRAPS("traps"), 
-    BOTTLE("bottle"), TOURCH("tourch"), BAGOFCOINS("bag of coins");
+    NONE("none"), KEY("Key"), CHALICE("Chalice"), GOLDBARS("Gold Bars"),
+    SWORD("Magic Sword"), SHIELD("Magic Shield"), ARMOUR("Magic Armour"), 
+    BOTTLE("Magic Bottle"), TOURCH("Tourch"), BAGOFCOINS("Bag of coins"),
+    DIAMOND("Diamond"), RUBY("Ruby");
     
     private String item;
     

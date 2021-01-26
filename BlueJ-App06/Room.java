@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class Room 
 {
     private String description;
+    private String title;
     private HashMap<String, Room> exits;        // stores exits of this room.
     private String name; 
     private Items item;
@@ -33,12 +34,13 @@ public class Room
      * @param description The room's description.
      */
     public Room(String description) 
-    {
+    { 
         this.name = description;
         item = Items.NONE;
         description = " ";
         exits = new HashMap<>();
     }
+    
 
     /**
      * Define an exit from this room.

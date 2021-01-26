@@ -50,7 +50,7 @@ public class Map
         dungeonKeyRoom = new Room("in a dungeon room with a key on a table");
         dungeonDiamondRoom = new Room("in a dungeon room with a shiny diamond in the centre");
         dungeonCoinRoom = new Room("in a what appears to be a dungeon room with a bag of coins."); 
-        dungeonExit = new Room("in a room with an exit which the sunlight coming through. You have completed the game");
+        dungeonExit = new Room("in a room with an exit which the sunlight coming through.\n You have completed the game");
     }
     
     /**

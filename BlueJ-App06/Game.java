@@ -23,7 +23,7 @@ public class Game
     private Parser parser;
     private Map map;
     private Room currentRoom;
-    private Room dungeonExit;
+    private Room dunegonExit; 
     private Player player;
     private Timer timer;
     
@@ -58,9 +58,25 @@ public class Game
                 finished = processCommand(command);
             }  
         }
+        
+        if(currentRoom.getLongDescription().equals("dungeonExit"))
+        {
+            winGame();
+            finished = true; 
+        }
+        
         System.out.println("Thank you for playing.  Good bye.");
     }
-     
+    
+    /**
+     * Method to win the game when the player reaches the exit. 
+     */
+    private void winGame()
+    {
+        System.out.println("You have collected all the treasure \n for the king,");
+        System.out.println("You have won the game.");
+    }
+    
     /**
      * Print out the opening message for the player.
      */
@@ -136,13 +152,6 @@ public class Game
                 System.out.println("You have " + timer + "s left...");
             }
         }
-        
-        if (currentRoom == dungeonExit)
-        {
-            System.out.println("You have collected all the treasure for the King,");
-            System.out.println("and left the dungeon. You win!!");    
-            wantToQuit = true;
-        }
         return wantToQuit;
     }
 
@@ -184,18 +193,12 @@ public class Game
         if (nextRoom == null) 
         {
             System.out.println("There is no door!");
-            if (currentRoom == dungeonExit)
-            {
-                 System.out.println("You have collected all the treasure for the King,");
-                 System.out.println("and left the dungeon. You win!!");    
-                 return true;
-            }
         }
-        else 
+        else  
         {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
-        } 
+        }
         return false;
     }
     

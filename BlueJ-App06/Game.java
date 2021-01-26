@@ -25,7 +25,7 @@ public class Game
     private Room currentRoom;
     private Room dungeonExit;
     private Player player;
-    
+    private Timer timer;
     
     /**
      * Create the game and initialise its internal map.
@@ -33,9 +33,10 @@ public class Game
     public Game() 
      {
         map = new Map(); 
-        currentRoom = map.getStartRoom();   
+        currentRoom = map.getStartRoom();     
         parser = new Parser();
         player = new Player("Tyronne");
+        timer = new Timer (25, -1, 5);
     }
     
     
@@ -69,6 +70,7 @@ public class Game
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("You have been tasked to reclaim the Kings treasure.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("You have "+ timer +"s to win.");
         System.out.println();
         
         System.out.println(currentRoom.getLongDescription());
@@ -82,17 +84,20 @@ public class Game
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
-   
+        boolean updateTimer = true;
+        
         CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) 
         {
             case UNKNOWN:
                 System.out.println("I don't know what you mean...");
-                break;
+                updateTimer = false;
+                return false;
                 
             case HELP:
                 printHelp();
+                updateTimer = false; 
                 break;
 
             case GO:
@@ -110,7 +115,33 @@ public class Game
             case UNLOCK:
                 unlockDoor(command);
                 break;
+            
+            case TIME:
+                System.out.println("You have " + timer + "s left...");
+                break;
                 
+        } 
+        
+        if (updateTimer) 
+        {
+            timer.updateTimer();
+            if (timer.hasExpired()) 
+            {
+                System.out.println("Time's up - you lost!");
+                wantToQuit = true;
+            } 
+            else if (timer.isLow()) 
+            {
+                System.out.println("Time is running low!");
+                System.out.println("You have " + timer + "s left...");
+            }
+        }
+        
+        if (currentRoom == dungeonExit)
+        {
+            System.out.println("You have collected all the treasure for the King,");
+            System.out.println("and left the dungeon. You win!!");    
+            wantToQuit = true;
         }
         return wantToQuit;
     }
@@ -124,9 +155,9 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the abandoned Town.");
-        System.out.println();
+        System.out.println("You are to collect the Kings treasure.");
+        System.out.println("You are alone and search rhe forest and dungeon");
+        System.out.println("You must leave through the dungeon and return to the King.");
         System.out.println("Your command words are:");
         parser.showCommands();
     }
@@ -153,17 +184,18 @@ public class Game
         if (nextRoom == null) 
         {
             System.out.println("There is no door!");
+            if (currentRoom == dungeonExit)
+            {
+                 System.out.println("You have collected all the treasure for the King,");
+                 System.out.println("and left the dungeon. You win!!");    
+                 return true;
+            }
         }
-        else
+        else 
         {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
-            if(currentRoom == dungeonExit)
-            {
-                System.out.println("Congratulations you made it!");
-                return true;
-            }
-        }
+        } 
         return false;
     }
     

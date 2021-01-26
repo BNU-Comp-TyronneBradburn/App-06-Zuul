@@ -24,7 +24,7 @@ public class Game
     private Map map;
     private Room currentRoom;
     private Player player;
-    
+    private Room dungeonExit;
     
     /**
      * Create the game and initialise its internal map.
@@ -95,7 +95,7 @@ public class Game
                 break;
 
             case GO:
-                goRoom(command);
+                wantToQuit = goRoom(command);
                 break;
 
             case QUIT:
@@ -135,13 +135,13 @@ public class Game
      * room, otherwise print an error message.
      */
     
-    private void goRoom(Command command) 
+    private boolean goRoom(Command command) 
     {
         if(!command.hasSecondWord()) 
         {
            // if there is no second word, we don't know where to go...
            System.out.println("Go where?");
-           return;
+           return false;
         }
 
         String direction = command.getSecondWord();
@@ -156,9 +156,14 @@ public class Game
         else
         {
             currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription()); 
+            System.out.println(currentRoom.getLongDescription());
+            if(currentRoom == dungeonExit)
+            {
+                System.out.println("Congratulations you made it!");
+                return true;
+            }
         }
-         return;
+        return false;
     }
     
     

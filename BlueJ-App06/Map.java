@@ -31,7 +31,7 @@ public class Map
         createRooms();
         connectRooms();
         
-        startRoom = forest;
+        startRoom = dungeonKeyRoom;
     }
     
     /**
@@ -103,6 +103,8 @@ public class Map
         dungeonCoinRoom.setExit("south", dungeonNorthernCorridor);
         dungeonCoinRoom.setExit("north", dungeonExit);
         dungeonCoinRoom.addItem(Items.BAGOFCOINS);
+        
+        dungeonExit.setExit("south", dungeonCoinRoom);
     }
 
     /**

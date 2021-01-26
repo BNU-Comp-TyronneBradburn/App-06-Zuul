@@ -13,6 +13,7 @@ public class Player
     private int score;
     private int count;
     private int maxHealth;
+    private int lost;
     private ArrayList<Items> itemList;
     private String name;
      
@@ -23,6 +24,7 @@ public class Player
     {
         score = 0;
         count = 0;
+        lost = 0;
         maxHealth = 100;
         
         itemList = new ArrayList();
@@ -39,6 +41,7 @@ public class Player
         if(item == Items.BOTTLE)
         {
             score = score + 10;
+            
         }
         else if(item == Items.CHALICE)
         {
@@ -73,7 +76,8 @@ public class Player
             score = score + 10;
         }
     }
-
+    
+    
     /**
      * Method to drop Items when used
      */
@@ -90,11 +94,11 @@ public class Player
         return maxHealth;
     }
     
-     public int getScore()
+    public int getScore()
     {
         return score;
-    }//end method getHealth
-
+    }
+    
     /**GET Method Propertie itemList*/
     public ArrayList getItemList()
      {
@@ -116,7 +120,7 @@ public class Player
     {
         this.maxHealth = maxHealth;
     }
-    
+  
     
     /**
      * method to print the stats of the player
@@ -126,12 +130,13 @@ public class Player
         System.out.println("Player Stats. ");
         System.out.println("Score =  " + score);
         System.out.println("Health = " + maxHealth);
+        
     }
     
     /**
      *  method to maske sure the player has the item for the cell unlock
      */
-    public boolean isCarrying(Items targetItem)
+    public boolean hasItem(Items targetItem)
     {
         boolean found = false; 
         for(Items item: itemList)

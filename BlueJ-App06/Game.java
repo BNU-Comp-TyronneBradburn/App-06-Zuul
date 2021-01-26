@@ -23,8 +23,9 @@ public class Game
     private Parser parser;
     private Map map;
     private Room currentRoom;
-    private Player player;
     private Room dungeonExit;
+    private Player player;
+    
     
     /**
      * Create the game and initialise its internal map.
@@ -193,7 +194,7 @@ public class Game
         {
             if(nextRoom.getShortDescription().contains("coin"))
             {
-                if(player.isCarrying(Items.KEY))
+                if(player.hasItem(Items.KEY))
                 {
                     currentRoom = nextRoom;
                     System.out.println("You have opened the door with the key.");
@@ -268,4 +269,5 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
+    
 }

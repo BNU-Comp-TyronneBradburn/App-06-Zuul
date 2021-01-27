@@ -136,7 +136,7 @@ public class Player
     /**
      *  method to maske sure the player has the item for the cell unlock
      */
-    public boolean hasItem(Items targetItem)
+    public boolean isCarrying(Items targetItem)
     {
         boolean found = false; 
         for(Items item: itemList)

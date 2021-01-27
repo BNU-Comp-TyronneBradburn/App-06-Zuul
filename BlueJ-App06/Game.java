@@ -219,6 +219,7 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
+        
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) 
@@ -229,7 +230,7 @@ public class Game
         {
             if(nextRoom.getShortDescription().contains("coin"))
             {
-                if(player.hasItem(Items.KEY))
+                if(player.isCarrying(Items.KEY))
                 {
                     currentRoom = nextRoom;
                     System.out.println("You have opened the door with the key.");

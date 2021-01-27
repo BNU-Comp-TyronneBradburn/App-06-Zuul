@@ -1,0 +1,49 @@
+Program.main();
+
+Welcome to the World of Zuul!
+You have been tasked to reclaim the Kings treasure.
+Type 'help' if you need help.
+You have 25s to win.
+
+You are in a gloomy forest with trees in every direction null.
+Exits: east north west Items Found SWORD
+> go north
+You are at an cave entrance null.
+Exits: south north Items Found TOURCH
+> go north
+You are in a large cave room with a fire tourch on a wall null.
+Exits: south north Items Found RUBY
+> go north
+You are in what appears to be a dungeon Corridor null.
+Exits: east south north west Items Found ARMOUR
+> go north
+You are in the northern part of the dungeon null.
+Exits: east south north west Items Found CHALICE
+> go west
+You are in a dungeon room with a shiny diamond in the centre null.
+Exits: east Items Found DIAMOND
+> go east
+You are in the northern part of the dungeon null.
+Exits: east south north west Items Found CHALICE
+> go east
+You are in a dungeon room with a key on a table null.
+Exits: west Items Found KEY
+> take key
+ item key taken 
+Player Stats. 
+Score =  0
+Health = 100
+> go east
+There is no door!
+> go west
+You are in the northern part of the dungeon null.
+Exits: east south north west Items Found CHALICE
+> go north
+You are in a what appears to be a dungeon room with a bag of coins. null.
+Exits: south north Items Found BAGOFCOINS
+> go north
+You are in a room with an exit which the sunlight coming through.
+ You have completed the game null.
+Exits: south Items Found NONE
+> quit
+Thank you for playing.  Good bye.

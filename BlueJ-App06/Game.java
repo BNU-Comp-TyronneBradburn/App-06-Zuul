@@ -36,7 +36,7 @@ public class Game
         currentRoom = map.getStartRoom();     
         parser = new Parser();
         player = new Player("Tyronne");
-        timer = new Timer (25, -1, 5);
+        timer = new Timer (30, -1, 5);
     }
     
     

@@ -31,7 +31,7 @@ public class Map
         createRooms();
         connectRooms();
         
-        startRoom = dungeonKeyRoom;
+        startRoom = forest;
     }
     
     /**

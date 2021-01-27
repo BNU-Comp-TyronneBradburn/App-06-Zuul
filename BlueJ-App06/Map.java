@@ -94,10 +94,10 @@ public class Map
         dungeonNorthernCorridor.setExit("west", dungeonDiamondRoom);
         dungeonNorthernCorridor.addItem(Items.CHALICE);
         
-        dungeonKeyRoom.setExit("west", dungeonNorthernCorridor);
+        dungeonKeyRoom.setExit("west", dungeonSouthernCorridor);
         dungeonKeyRoom.addItem(Items.KEY);
         
-        dungeonDiamondRoom.setExit("east", dungeonNorthernCorridor);
+        dungeonDiamondRoom.setExit("east", dungeonSouthernCorridor);
         dungeonDiamondRoom.addItem(Items.DIAMOND);
         
         dungeonCoinRoom.setExit("south", dungeonNorthernCorridor);

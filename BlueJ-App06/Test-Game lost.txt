@@ -1,0 +1,117 @@
+Program.main();
+
+Welcome to the World of Zuul!
+You have been tasked to reclaim the Kings treasure.
+Type 'help' if you need help.
+You have 25s to win.
+
+You are in a gloomy forest with trees in every direction null.
+Exits: east north west Items Found SWORD
+> take sword
+ item sword taken 
+Player Stats. 
+Score =  10
+Health = 100
+> go east
+You are at an impassable cliff face null.
+Exits: west Items Found GOLDBARS
+> take goldbars
+ item goldbars taken 
+Player Stats. 
+Score =  20
+Health = 100
+> go west
+You are in a gloomy forest with trees in every direction null.
+Exits: east north west Items Found NONE
+> go west
+You are near an impassable river null.
+Exits: east Items Found BOTTLE
+> take bottle
+ item bottle taken 
+Player Stats. 
+Score =  30
+Health = 100
+> go east
+You are in a gloomy forest with trees in every direction null.
+Exits: east north west Items Found NONE
+> go north
+You are at an cave entrance null.
+Exits: south north Items Found TOURCH
+> take tourch
+ item tourch taken 
+Player Stats. 
+Score =  30
+Health = 100
+> go north
+You are in a large cave room with a fire tourch on a wall null.
+Exits: south north Items Found RUBY
+> take ruby
+ item ruby taken 
+Player Stats. 
+Score =  40
+Health = 100
+> go north
+You are in what appears to be a dungeon Corridor null.
+Exits: east south north west Items Found ARMOUR
+> take armour
+ item armour taken 
+Player Stats. 
+Score =  50
+Health = 100
+> go east
+You are in dungeon room null.
+Exits: west Items Found SHIELD
+> take shield
+ item shield taken 
+Player Stats. 
+Score =  60
+Health = 100
+> go west
+You are in what appears to be a dungeon Corridor null.
+Exits: east south north west Items Found NONE
+> go west
+You are in a dungeon room with a shiny diamond in the centre null.
+Exits: east Items Found DIAMOND
+> take diamond
+ item diamond taken 
+Player Stats. 
+Score =  70
+Health = 100
+> go east
+You are in the northern part of the dungeon null.
+Exits: east south north west Items Found CHALICE
+> take chalice
+ item chalice taken 
+Player Stats. 
+Score =  80
+Health = 100
+Time is running low!
+You have 5s left...
+> go west
+You are in a dungeon room with a shiny diamond in the centre null.
+Exits: east Items Found NONE
+Time is running low!
+You have 4s left...
+> go east
+You are in the northern part of the dungeon null.
+Exits: east south north west Items Found NONE
+Time is running low!
+You have 3s left...
+> go north
+You are in a what appears to be a dungeon room with a bag of coins. null.
+Exits: south north Items Found BAGOFCOINS
+Time is running low!
+You have 2s left...
+> take bagofcoins
+ item bagofcoins taken 
+Player Stats. 
+Score =  90
+Health = 100
+Time is running low!
+You have 1s left...
+> go north
+You are in a room with an exit which the sunlight coming through.
+ You have completed the game null.
+Exits: south Items Found NONE
+Time's up - you lost!
+Thank you for playing.  Good bye.
